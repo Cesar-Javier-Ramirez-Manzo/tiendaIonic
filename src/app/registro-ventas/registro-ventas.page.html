@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+   </ion-buttons>
+    <ion-title>
+      Registro 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    
+    <ion-item>
+      <ion-label position="stacked">Filtrar por fecha(DD-MM-AAAA)</ion-label>
+      <ion-input [(ngModel)]="fechaFiltro"></ion-input>
+    </ion-item>
+    <ion-button expand="block" fill="outline" (click)="filtrar()">Filtrar</ion-button>
+    
+
+    <ion-list>
+      <ion-list-header color="tertiary">
+       <ion-label>{{total}} Ventas</ion-label>
+       </ion-list-header>
+       <ion-item *ngFor="let registro of listado" (click)="detallesVenta(registro)" > 
+       <ion-label>
+       <h3>Cliente: {{registro.nombre}}</h3>
+       <p>Producto comprado: {{registro.producto}}</p>
+       <p>Cantidad comprado: {{registro.cantidad}}</p>
+       <p>Total gastado: ${{registro.totalcomprado}}</p>
+       <p>Total vendido: ${{registro.totalvendido}}</p>
+       <p>Fechas: {{registro.fecha}}</p>
+       </ion-label>
+         
+       </ion-item>
+       </ion-list>
+  </div>
+</ion-content>

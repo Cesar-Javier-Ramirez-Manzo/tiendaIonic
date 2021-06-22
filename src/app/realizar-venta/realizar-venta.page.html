@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Realizar venta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input [(ngModel)]="item.nombre" readonly></ion-input>
+      </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Direccion</ion-label>
+        <ion-input [(ngModel)]="item.direccion" readonly ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Telefono</ion-label>
+        <ion-input type="number" [(ngModel)]="item.telefono" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Correo</ion-label>
+        <ion-input [(ngModel)]="item.correo" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Cantidad a vender</ion-label>
+      <ion-input  [(ngModel)]="cantidadV" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Fecha de venta(DD-MM-AAAA)</ion-label>
+      <ion-input  [(ngModel)]="fechaV" required></ion-input>
+    </ion-item>
+       
+    <ion-button expand="block" fill="outline" (click)="regresar()">Regresar</ion-button>
+</div>
+<div class="ion-padding">
+  
+<ion-list>
+  <ion-list-header color="tertiary">
+   <ion-label>{{total}} productos</ion-label>
+   </ion-list-header>
+   <ion-item *ngFor="let registro of listado" (click)="venderProducto(registro)" >
+    
+          <ion-avatar>
+            <img src="{{registro.fotografia}}">
+          </ion-avatar>  
+   <ion-label>
+   <h3>{{registro.nombre}}</h3>
+   <p>{{registro.descripcion}}</p>
+   <p>${{registro.preciodeventa}}</p>
+   <p>Cantidad: {{registro.cantidad}}</p>
+   </ion-label>
+     
+   </ion-item>
+   </ion-list>
+</div>
+</ion-content>
